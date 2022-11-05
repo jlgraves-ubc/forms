@@ -1,0 +1,69 @@
+---
+title: "Forms Example"
+format: html
+
+form:
+  submit: "Submit"
+  action: ""
+  fields:
+  - text: "This is a form spacer"
+  - name: Text1
+    type: text
+    id: textid
+    label: "A text field (1)"
+  - name: Text2
+    type: text
+    id: textid2
+    label: "Another text field (2)"
+  - text: "This is a form spacer"
+  - text: ---
+  - name: Radio
+    type: radio
+    label: "My Radio Button"
+    id: radio1
+    values:
+    - text: Good
+      value: 1
+    - text: Bad
+      value: 0
+  - name: Checkbox
+    type: checkbox
+    id: checkbox1
+    label: "My Checkbox"
+    values:
+    - text: "High"
+      value: "hi"
+    - text: "Low"
+      value: "lo"
+    - text: "Mid"
+      value: "mid"
+  - name: Selector
+    type: select
+    id: selector1
+    label: My Selector
+    multiple: true #multiple selections?
+    size: 3 #number to size
+    values:
+    - text: Option 1
+      value: 1
+    - text: Option 2
+      value: 2
+    - text: Option 3
+      value: 3
+    - text: Option 4
+      value: 4
+  - name: BigText
+    id: textarea1
+    type: textarea
+    label: Enter lots of text
+    width: 30 #in rows
+    height: 30 #in cols
+---
+
+
+---
+## Heading
+
+{{< form >}}
+
+
