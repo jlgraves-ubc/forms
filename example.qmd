@@ -1,6 +1,7 @@
 ---
-title: "Forms Example"
+title: "Forms Documentation"
 format: html
+toc: true
 
 form:
   submit: "Submit"
@@ -11,6 +12,7 @@ form:
     type: text
     id: textid
     label: "A text field (1)"
+    required: true
   - name: Text2
     type: text
     id: textid2
@@ -58,11 +60,105 @@ form:
     label: Enter lots of text
     width: 30 #in rows
     height: 30 #in cols
+  - name: MyEmail
+    id: email1
+    type: email
+    label: "Enter your email"
+  - name: FileUpload
+    id: file1
+    type: file
+    label: Upload a file
 ---
 
+This page demonstrates how to use the `form` shortcode.  A form consists of a set of YAML keys and a shortcode.
 
----
-## Heading
+Insert the shortcode where you want the form to appear.  The form is wrapped in a `div` which you can use to style the form, using CSS.
+
+
+# Form Elements
+
+The elements are:
+
+| Key     | Purpose     | Values | Required? | 
+|---------|------------|---------|--------|
+| `action`| path to action | `filepath` | Required |
+| `submit`| text for submit button | `string` | Optional (Default: `Submit`) |
+| `fields`| list of fields | `...` | `fields` | Required |
+
+
+This is specified as follows:
+
+
+```yaml
+form:
+  action: "pathto/action/file.js"
+  submit: "Submit Form"
+  fields:
+  - ...
+```
+## Form Fields
+
+The `fields` element is a list of fields, as outlined below.  All inputs are strings, unless mentioned:
+
+| Key      |  Description                                   |  Required? |
+|----------|--------------------------------------------|------------|
+|`name`    | The name for the field       | Yes        |
+| `type`   | The input type: see list below | Yes       |
+| `id`     | The id for the input           | Yes       |
+| `label`  | The label to display for the input | Yes   |
+| `values` | A list of values for multiple inputs | `radio`, `checkbox`, `select` |
+| `width`  | `integer`: Width of input | No |
+| `height` | `integer`: Height of input | No |
+| `required` | `boolean`: Require a response^[Only works for certain types of fields] | No |
+| `multiple` | `boolean`: Allow multiple values | No |
+| `size` | `integer`: Number of inputs to display | No |
+
+
+The currently supported input `type`-s are:
+
+
+| Type           | Description                       | Requireable?  |  Multiple valued |
+|----------------|-----------------------------------|-------------|-------------|
+| `text` | Single-line text input                    | Yes | No |
+| `textarea` | A large, multi-line text input  | No | No |
+| `checkbox` | A series of checkboxes | Yes^[*poorly] | Yes |
+| `radio` | Series of radio options | Yes^[*poorly] | No |
+| `select`| Dropdown selection, styled by CSS | Yes | No
+| `email` | Email-only text input | No | No |
+| `file` | File-submission button | No | No |
+
+## Form Field Values
+The `values` for multi-line inputs are specified as
+
+```yaml
+form:
+  ...
+  fields:
+  - ...:
+    values:
+    - text: Radio 1
+      value: 1
+```
+
+* `text` is the label text for the option to be displayed
+* `value` is the value selecting the option will select
+
+## Non-field Form Entries
+
+You can also add arbitrary text using the `text` field:
+
+```yaml
+form:
+  ...
+  fields:
+  - text: "Some  text"
+  - text: ---
+```
+
+The `---` will insert a horizontal rule in the form.
+
+
+# Example Form
 
 {{< form >}}
 

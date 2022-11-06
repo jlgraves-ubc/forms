@@ -53,6 +53,12 @@ Fields which take multiple entry values take a `values` parameter, which looks l
 
 You can see more detailed (and better-formatted) documentation in the example, below.
 
+## To Do:
+
+* Add `orientation` option (removes `<br>` tag to make thing horizontal or vertical)
+* Add CSS classes from Bootswatch theming
+* Add a JS example for form output
+
 ## Example
 
 Here is the source code for a minimal example: [example.qmd](example.qmd).

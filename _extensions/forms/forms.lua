@@ -36,6 +36,11 @@ return {
       
       local field = fields[f]
 
+      local required = ""
+      if not isEmpty(field.required) and pandoc.utils.stringify(field.required) == "true" then
+        required = " required"
+      end
+
 
       if isEmpty(field.type) and not isEmpty(field.text) then
       -- Handle non-fields (i.e. text)
@@ -59,7 +64,7 @@ return {
         -- Handle text fields
 
           form_start = form_start .. "<label for=\"" .. id .. "\">" .. label .. "</label><br>\n"
-          form_start = form_start .. "  <input type = \"text\" id = \"" .. id .. "\" name = \"" .. name .. "\"><br>\n"
+          form_start = form_start .. "  <input type = \"text\" id = \"" .. id .. "\" name = \"" .. name .. "\"" .. required .. " ><br>\n"
 
         elseif type == "textarea" then
         -- Handle textarea fields
@@ -74,13 +79,22 @@ return {
             rows = pandoc.utils.stringify(field.height)
           end
               
-            
-
           form_start = form_start .. "<label for =\"" .. id .. "\">" .. label .. "</label><br>\n"
           form_start = form_start .. "<textarea name =\"" .. name .. "\" id = \"" .. id .. "\" rows = ..\"" .. rows .. "\" cols =\"" .. cols .."\"></textarea><br>\n"
+        
+        elseif type == "email" then
+        -- Handle email address inputs
 
+          form_start = form_start .. "<label for=\"" .. id .. "\">" .. label .. "</label><br>\n"
+          form_start = form_start .. "<input type=\"email\" id=\"" .. id .. "\" name=\"" .. "\"" .. required .. " ><br>\n"
+        
+        elseif type == "file" then
+        -- Handle file form inputs
+        form_start = form_start .. "<label for=\"" .. id .. "\">" .. label .. "</label><br>\n"
+        form_start = form_start .. "<input type=\"file\" id = \"" .. id .. "\" name=\"" .. name .. "\"" .. required .. " ><br>\n"
+        
         elseif type == "select" then
-        -- Handle selector (drop-dpwns)
+        -- Handle selector (drop-downs)
           
           local size = "3" 
           if not isEmpty(field.size) then
@@ -122,7 +136,7 @@ return {
             local val = pandoc.utils.stringify(value.value)
 
             
-            form_start = form_start .. "  <input type = \"" .. type .. "\" id = \"" .. id .. "\" name = \"" .. name .. "\" value =\"" .. val .. "\">\n"
+            form_start = form_start .. "  <input type = \"" .. type .. "\" id = \"" .. id .. "\" name = \"" .. name .. "\" value =\"" .. val .. "\"" .. required .. " >\n"
             form_start = form_start .. "  <label for=\"" .. id .. "\">" .. label_t .. "</label><br> \n"
             -- <input type = "type" id = "id" name = "name" value = "label_v">
             -- <label for = "id">label_t</label><br>
@@ -136,7 +150,7 @@ return {
     -- Close the form and submit
     form_start = form_start .. "<input type=\"submit\" value = \"" .. submit_text .. "\"> \n"
     form_start = form_start .. form_end
-    --quarto.log.output(form_start)
+    quarto.log.output(form_start)
     return pandoc.RawInline("html", form_start)
 
 
