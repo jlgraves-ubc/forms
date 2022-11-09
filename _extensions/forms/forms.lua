@@ -28,10 +28,14 @@ return {
 
     local submit_text = pandoc.utils.stringify(meta["form.submit"])
     local action = pandoc.utils.stringify(meta["form.action"])
+    local formid = "form"
+    if not isEmpty(meta["form.id"]) then
+      form_id = pandoc.utils.stringify(meta["form.id"])
+    end
 
     -- These are the form items
     -- action (form.action) describes the handler function for the form submit
-    local form_start = "<div id = \"form-div\" class = \"form-wrapper\">\n <form id = \"form\" action = \"" .. action .. "\">\n"
+    local form_start = "<div id = \"" .. formid .. "-div\" class = \"form-wrapper\">\n <form id = \"" .. formid .. "\" action = \"" .. action .. "\">\n"
     local form_end = "</form></div>\n"
 
     -- Fields for the Form --
@@ -180,7 +184,7 @@ return {
     form_start = form_start .. "<br>\n<div class=\"form-group\">\n"
     form_start = form_start .. "  <input type=\"submit\" value = \"" .. submit_text .. "\" class=\"btn btn-primary\">\n</div>\n"
     form_start = form_start .. form_end
-    quarto.log.output(form_start)
+    -- quarto.log.output(form_start)
     return pandoc.RawInline("html", form_start)
 
 

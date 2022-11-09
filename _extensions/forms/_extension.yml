@@ -1,6 +1,6 @@
 title: Forms
 author: Jonathan Graves
-version: 0.1.0
+version: 1.0.0
 quarto-required: ">=1.2.0"
 contributes:
   shortcodes:

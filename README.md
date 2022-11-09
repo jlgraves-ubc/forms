@@ -2,8 +2,6 @@
 
 This extension allows you to add an HTML form to your Quarto HTML pages, using the the `form` shortcode
 
-
-
 ## Installing
 
 ```bash
@@ -53,13 +51,22 @@ Fields which take multiple entry values take a `values` parameter, which looks l
 
 You can see more detailed (and better-formatted) documentation in the example, below.
 
-## To Do:
-
-* Add `orientation` option (removes `<br>` tag to make thing horizontal or vertical)
-* Add CSS classes from Bootswatch theming
-* Add a JS example for form output
-
 ## Example
 
 Here is the source code for a minimal example: [example.qmd](example.qmd).
 
+![Example](media/example.png)
+
+
+# Contributing
+
+This project is open and welcome contributions.  Here are a couple of things you could do:
+
+* Modify all of the HTML classes to use variables instead of built-ins, to make the easier to manage or adjust
+* Add some of the rarer form elements I didn't already code
+* Create support for `<legend>` items in the form
+* Add a `placeholder` parameter
+* Write tests for key functionality
+* Add form display options for subtext
+
+Just submit a pull request!
