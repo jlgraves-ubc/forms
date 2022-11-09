@@ -23,10 +23,11 @@ return {
     checkHTMLDeps()
 
     local submit_text = pandoc.utils.stringify(meta["form.submit"])
+    local action = pandoc.utils.stringify(meta["form.action"])
 
     -- These are the form items
     -- action (form.action) describes the handler function for the form submit
-    local form_start = "<div id = \"form\" class = \"form-wrapper\">\n <form action = \"" .. pandoc.utils.stringify(meta["form.action"]) .. "\">\n"
+    local form_start = "<div id = \"form-div\" class = \"form-wrapper\">\n <form id = \"form\" action = \"" .. action .. "\">\n"
     local form_end = "</form></div>\n"
 
     -- Fields for the Form --
@@ -148,6 +149,7 @@ return {
       end
     end
     -- Close the form and submit
+
     form_start = form_start .. "<input type=\"submit\" value = \"" .. submit_text .. "\"> \n"
     form_start = form_start .. form_end
     quarto.log.output(form_start)

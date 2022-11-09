@@ -1,11 +1,14 @@
 ---
 title: "Forms Documentation"
-format: html
-toc: true
+format: 
+  html:
+    include-in-header: 
+    - file: submit_form.md
+    toc: true
 
 form:
   submit: "Submit"
-  action: ""
+  action: "javascript:submit()"
   fields:
   - text: "This is a form spacer"
   - name: Text1
