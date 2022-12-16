@@ -5,7 +5,7 @@ This extension allows you to add an HTML form to your Quarto HTML pages, using t
 ## Installing
 
 ```bash
-quarto add jlgraves-ubc/forms
+quarto install extension jlgraves-ubc/forms
 ```
 This will install the extension under the `_extensions` subdirectory.
 If you're using version control, you will want to check in this directory.
