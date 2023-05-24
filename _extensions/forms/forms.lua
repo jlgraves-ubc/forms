@@ -128,7 +128,7 @@ return {
 
           form_start = form_start .. "<div class=\"form-group\">\n"
           form_start = form_start .. "<label for = \"" .. id .. "\" class=\"form-label mt-4\">" .. label .. "</label>\n"
-          form_start = form_start .. "<select id= \"" .. id .. "\" size = \"" .. size .. "\" " .. multiple .. " class=\"form-select\">\n"
+          form_start = form_start .. "<select id= \"" .. id .. "\" size = \"" .. size .. "\" " .. multiple .. " " .. required .. " class=\"form-select\">\n"
           
           for v = 1,#field.values do
             local value = field.values[v]
