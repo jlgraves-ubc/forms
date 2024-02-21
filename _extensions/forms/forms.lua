@@ -32,10 +32,17 @@ return {
     if not isEmpty(meta["form.id"]) then
       form_id = pandoc.utils.stringify(meta["form.id"])
     end
+    
+    -- If the user passes a method, use it, otherwise use GET   
+    if not isEmpty(meta["form.method"]) then
+      method = pandoc.utils.stringify(meta["form.method"])
+    else
+      method = "GET"
+    end
 
     -- These are the form items
     -- action (form.action) describes the handler function for the form submit
-    local form_start = "<div id = \"" .. formid .. "-div\" class = \"form-wrapper\">\n <form id = \"" .. formid .. "\" action = \"" .. action .. "\">\n"
+    local form_start = "<div id = \"" .. formid .. "-div\" class = \"form-wrapper\">\n <form id = \"" .. formid .. "\" action = \"" .. action .. "\" method = \"" .. method .. "\">\n"
     local form_end = "</form></div>\n"
 
     -- Fields for the Form --

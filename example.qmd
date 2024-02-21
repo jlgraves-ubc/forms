@@ -10,6 +10,7 @@ form:
   id: MyFormID
   submit: "Submit"
   action: "javascript:submit()"
+  method: GET
   fields:
   - text: "This is a form spacer"
   - name: Text1
@@ -92,9 +93,10 @@ The form elements are:
 | Key     | Purpose     | Values | Required? | 
 |---------|------------|---------|--------|
 | `action`| path to action | `filepath` | Required |
+| `method`| HTTP method used for form submission (GET or POST) | `string` | Optional (Default: `GET`) |
 | `submit`| text for submit button | `string` | Optional (Default: `Submit`) |
 | `fields`| list of fields | `...` | `fields` | Required |
-| `id` | an id for the form | `string` | Option (Default: `form`) | 
+| `id` | an id for the form | `string` | Optional (Default: `form`) | 
 
 
 This is specified as follows:
@@ -103,11 +105,13 @@ This is specified as follows:
 ```yaml
 form:
   action: "pathto/action/file.js"
+  method: GET
   submit: "Submit Form"
   id: FormID
   fields:
   - ...
 ```
+
 ## Form Fields
 
 The `fields` element is a list of fields, as outlined below.  All inputs are strings, unless mentioned:

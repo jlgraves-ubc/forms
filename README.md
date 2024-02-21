@@ -26,6 +26,7 @@ You define a form using the metadata in the document header, as follows:
 form:
   action: "/action.js"
   submit: "Submit Now!"
+  method: "GET"
   fields:
   - name: "A Text Field"
   - type: "text"
