@@ -99,7 +99,7 @@ return {
           
           form_start = form_start .. "<div class=\"form-group\">\n"
           form_start = form_start .. "<label for =\"" .. id .. "\">" .. label .. "</label class = \"form-label mt-4\">\n"
-          form_start = form_start .. "<textarea name =\"" .. name .. "\" id = \"" .. id .. "\" rows = ..\"" .. rows .. "\" cols =\"" .. cols .."\" class = \"form-control\"></textarea>\n"
+          form_start = form_start .. "<textarea name =\"" .. name .. "\" id = \"" .. id .. "\" rows = \"" .. rows .. "\" cols =\"" .. cols .."\" class = \"form-control\"></textarea>\n"
           form_start = form_start .. "</div>\n"
         
         elseif type == "email" then

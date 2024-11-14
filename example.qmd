@@ -1,106 +1,104 @@
 ---
 title: "Forms Documentation"
-format: 
+format:
   html:
-    include-in-header: 
-    - file: submit_form.md
+    include-in-header:
+      - file: submit_form.md
     toc: true
-
+filters:
+  - jlgraves-ubc/forms
 form:
   id: MyFormID
   submit: "Submit"
   action: "javascript:submit()"
   method: GET
   fields:
-  - text: "This is a form spacer"
-  - name: Text1
-    type: text
-    id: textid
-    label: "A text field (1)"
-    required: true
-  - name: Text2
-    type: text
-    id: textid2
-    label: "Another text field (2)"
-  - text: "This is a form spacer"
-  - text: ---
-  - name: Radio
-    type: radio
-    label: "My Radio Button"
-    id: radio1
-    values:
-    - text: Good
-      value: 1
-    - text: Bad
-      value: 0
-  - name: Checkbox
-    type: checkbox
-    id: checkbox1
-    label: "My Checkbox"
-    values:
-    - text: "High"
-      value: "hi"
-    - text: "Low"
-      value: "lo"
-    - text: "Mid"
-      value: "mid"
-  - name: Selector
-    type: select
-    id: selector1
-    label: My Selector
-    multiple: true #multiple selections?
-    size: 3 #number to size
-    values:
-    - text: Option 1
-      value: 1
-    - text: Option 2
-      value: 2
-    - text: Option 3
-      value: 3
-    - text: Option 4
-      value: 4
-  - name: BigText
-    id: textarea1
-    type: textarea
-    label: Enter lots of text
-    width: 30 #in rows
-    height: 30 #in cols
-  - name: MyEmail
-    id: email1
-    type: email
-    label: "Enter your email"
-  - name: FileUpload
-    id: file1
-    type: file
-    label: Upload a file
+    - text: "This is a form spacer"
+    - name: Text1
+      type: text
+      id: textid
+      label: "A text field (1)"
+      required: true
+    - name: Text2
+      type: text
+      id: textid2
+      label: "Another text field (2)"
+    - text: "This is a form spacer"
+    - text: "---"
+    - name: Radio
+      type: radio
+      label: "My Radio Button"
+      id: radio1
+      values:
+        - text: Good
+          value: 1
+        - text: Bad
+          value: 0
+    - name: Checkbox
+      type: checkbox
+      id: checkbox1
+      label: "My Checkbox"
+      values:
+        - text: "High"
+          value: "hi"
+        - text: "Low"
+          value: "lo"
+        - text: "Mid"
+          value: "mid"
+    - name: Selector
+      type: select
+      id: selector1
+      label: My Selector
+      multiple: true #multiple selections?
+      size: 3 #number to size
+      values:
+        - text: Option 1
+          value: 1
+        - text: Option 2
+          value: 2
+        - text: Option 3
+          value: 3
+        - text: Option 4
+          value: 4
+    - name: BigText
+      id: textarea1
+      type: textarea
+      label: Enter lots of text
+      width: 30 #in rows
+      height: 30 #in cols
+    - name: MyEmail
+      id: email1
+      type: email
+      label: "Enter your email"
+    - name: FileUpload
+      id: file1
+      type: file
+      label: Upload a file
 ---
 
-This page demonstrates how to use the `form` shortcode.  A form consists of a set of YAML keys and a shortcode.
+This page demonstrates how to use the `form` shortcode. A form consists of a set of YAML keys and a shortcode.
 
-Insert the shortcode where you want the form to appear.  The form is wrapped in a `div` which you can use to style the form, using CSS.  The default form style uses whatever theme you have chosen from the [Bootswatch](https://bootswatch.com/) themes supported by Quarto.
+Insert the shortcode where you want the form to appear. The form is wrapped in a `div` which you can use to style the form, using CSS. The default form style uses whatever theme you have chosen from the [Bootswatch](https://bootswatch.com/) themes supported by Quarto.
 
 If you use a custom theme, you will likely need to provide CSS for the form element classes, if you don't like the default.
-
 
 # Form Elements
 
 :::{.warning}
-For most of the form elements that are not intended as labels, you should use HTML-safe names.  Calling an form's name `"?><div ali --: !---` is probably a bad idea and will break your form.
+For most of the form elements that are not intended as labels, you should use HTML-safe names. Calling an form's name `"?><div ali --: !---` is probably a bad idea and will break your form.
 :::
 
 The form elements are:
 
-| Key     | Purpose     | Values | Required? | 
-|---------|------------|---------|--------|
-| `action`| path to action | `filepath` | Required |
-| `method`| HTTP method used for form submission (GET or POST) | `string` | Optional (Default: `GET`) |
-| `submit`| text for submit button | `string` | Optional (Default: `Submit`) |
-| `fields`| list of fields | `...` | `fields` | Required |
-| `id` | an id for the form | `string` | Optional (Default: `form`) | 
-
+| Key      | Purpose                                            | Values     | Required?                    |
+| -------- | -------------------------------------------------- | ---------- | ---------------------------- | -------- |
+| `action` | path to action                                     | `filepath` | Required                     |
+| `method` | HTTP method used for form submission (GET or POST) | `string`   | Optional (Default: `GET`)    |
+| `submit` | text for submit button                             | `string`   | Optional (Default: `Submit`) |
+| `fields` | list of fields                                     | `...`      | `fields`                     | Required |
+| `id`     | an id for the form                                 | `string`   | Optional (Default: `form`)   |
 
 This is specified as follows:
-
 
 ```yaml
 form:
@@ -109,41 +107,40 @@ form:
   submit: "Submit Form"
   id: FormID
   fields:
-  - ...
+    - "..."
 ```
 
 ## Form Fields
 
-The `fields` element is a list of fields, as outlined below.  All inputs are strings, unless mentioned:
+The `fields` element is a list of fields, as outlined below. All inputs are strings, unless mentioned:
 
-| Key      |  Description                                   |  Required? |
-|----------|--------------------------------------------|------------|
-|`name`    | The name for the field       | Yes        |
-| `type`   | The input type: see list below | Yes       |
-| `id`     | The id for the input           | Yes       |
-| `label`  | The label to display for the input | Yes   |
-| `values` | A list of values for multiple inputs | `radio`, `checkbox`, `select` |
-| `width`  | `integer`: Width of input | No |
-| `height` | `integer`: Height of input | No |
-| `required` | `boolean`: Require a response^[Only works for certain types of fields] | No |
-| `multiple` | `boolean`: Allow multiple values | No |
-| `size` | `integer`: Number of inputs to display | No |
-
+| Key        | Description                                                            | Required?                     |
+| ---------- | ---------------------------------------------------------------------- | ----------------------------- |
+| `name`     | The name for the field                                                 | Yes                           |
+| `type`     | The input type: see list below                                         | Yes                           |
+| `id`       | The id for the input                                                   | Yes                           |
+| `label`    | The label to display for the input                                     | Yes                           |
+| `values`   | A list of values for multiple inputs                                   | `radio`, `checkbox`, `select` |
+| `width`    | `integer`: Width of input                                              | No                            |
+| `height`   | `integer`: Height of input                                             | No                            |
+| `required` | `boolean`: Require a response^[Only works for certain types of fields] | No                            |
+| `multiple` | `boolean`: Allow multiple values                                       | No                            |
+| `size`     | `integer`: Number of inputs to display                                 | No                            |
 
 The currently supported input `type`-s are:
 
-
-| Type           | Description                       | Requireable?  |  Multiple valued |
-|----------------|-----------------------------------|-------------|-------------|
-| `text` | Single-line text input                    | Yes | No |
-| `textarea` | A large, multi-line text input  | No | No |
-| `checkbox` | A series of checkboxes | Yes^[*poorly] | Yes |
-| `radio` | Series of radio options | Yes^[*poorly] | No |
-| `select`| Dropdown selection, styled by CSS | Yes | No
-| `email` | Email-only text input | No | No |
-| `file` | File-submission button | No | No |
+| Type       | Description                       | Requireable?  | Multiple valued |
+| ---------- | --------------------------------- | ------------- | --------------- |
+| `text`     | Single-line text input            | Yes           | No              |
+| `textarea` | A large, multi-line text input    | No            | No              |
+| `checkbox` | A series of checkboxes            | Yes^[*poorly] | Yes             |
+| `radio`    | Series of radio options           | Yes^[*poorly] | No              |
+| `select`   | Dropdown selection, styled by CSS | Yes           | No              |
+| `email`    | Email-only text input             | No            | No              |
+| `file`     | File-submission button            | No            | No              |
 
 ## Form Field Values
+
 The `values` for multi-line inputs are specified as
 
 ```yaml
@@ -156,8 +153,8 @@ form:
       value: 1
 ```
 
-* `text` is the label text for the option to be displayed
-* `value` is the value selecting the option will select
+- `text` is the label text for the option to be displayed
+- `value` is the value selecting the option will select
 
 ## Non-field Form Entries
 
@@ -173,9 +170,6 @@ form:
 
 Using `---` will insert a horizontal rule in the form.
 
-
 # Example Form
 
 {{< form >}}
-
-
