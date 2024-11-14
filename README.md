@@ -23,6 +23,8 @@ You define a form using the metadata in the document header, as follows:
 
 ```yaml
 ---
+filters:
+  - jlgraves-ubc/forms
 form:
   action: "/action.js"
   submit: "Submit Now!"
