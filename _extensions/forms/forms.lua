@@ -98,7 +98,7 @@ return {
           end
           
           form_start = form_start .. "<div class=\"form-group\">\n"
-          form_start = form_start .. "<label for =\"" .. id .. "\">" .. label .. "</label class = \"form-label mt-4\">\n"
+          form_start = form_start .. "<label for =\"" .. id .. "\" class = \"form-label mt-4\">" .. label .. "</label>\n"
           form_start = form_start .. "<textarea name =\"" .. name .. "\" id = \"" .. id .. "\" rows = \"" .. rows .. "\" cols =\"" .. cols .."\" class = \"form-control\"></textarea>\n"
           form_start = form_start .. "</div>\n"
         
@@ -166,7 +166,7 @@ return {
 
           form_start = form_start .. "<div class=\"form-group\">\n"
           form_start = form_start .. "<fieldset class=\"form-group\">\n"
-          form_start = form_start .. "<p class = \"form-label\">" .. label .. "</p>\n"
+          form_start = form_start .. "<p class = \"form-label mt-4\">" .. label .. "</p>\n"
           for v = 1, #field.values do
 
             local value = field.values[v]
