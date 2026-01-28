@@ -106,7 +106,7 @@ return {
         -- Handle email address inputs
           form_start = form_start .. "<div class=\"form-group\">\n"
           form_start = form_start .. "<label for=\"" .. id .. "\" class=\"form-label mt-4\">" .. label .. "</label>\n"
-          form_start = form_start .. "<input type=\"email\" id=\"" .. id .. "\" name=\"" .. name .. "\" class=\"form-control\" " .. required .. ">\n"
+          form_start = form_start .. "<input type=\"email\" id=\"" .. id .. "\" name=\"" .. name .. "\" class=\"form-control\" autocomplete=\"on\" " .. required .. ">\n"
           form_start = form_start .. "</div>\n"
 
         elseif type == "file" then
