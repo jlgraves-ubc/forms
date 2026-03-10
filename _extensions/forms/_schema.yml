@@ -1,0 +1,30 @@
+$schema: https://m.canouil.dev/quarto-wizard/assets/schema/v1/extension-schema.json
+
+shortcodes:
+  form:
+    description: Render an HTML form from document metadata.
+
+options:
+  form:
+    type: object
+    description: Form definition metadata consumed by the form shortcode.
+    properties:
+      action:
+        type: string
+        description: Form submit endpoint URL.
+      submit:
+        type: string
+        description: Submit button text.
+      method:
+        type: string
+        enum: [GET, POST]
+        enum-case-insensitive: true
+        description: HTTP method used for form submission.
+      id:
+        type: string
+        description: HTML id used for the generated form element.
+      fields:
+        type: array
+        description: List of field definitions rendered in order.
+        items:
+          type: object
