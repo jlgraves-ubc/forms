@@ -1,0 +1,41 @@
+{
+  "Forms metadata setup": {
+    "prefix": "metadata",
+    "body": [
+      "filters:",
+      "  - jlgraves-ubc/forms",
+      "form:",
+      "  action: \"${1:/action.js}\"",
+      "  submit: \"${2:Submit Now!}\"",
+      "  method: \"${3:GET}\"",
+      "  fields:",
+      "    - name: \"${4:A Text Field}\"",
+      "      type: \"text\"",
+      "      id: \"${5:textfield1}\"",
+      "      label: \"${6:Your label}\""
+    ],
+    "description": "Insert base metadata for a form definition."
+  },
+  "Form shortcode": {
+    "prefix": "shortcode",
+    "body": [
+      "{{< form >}}"
+    ],
+    "description": "Insert the form shortcode at the render location."
+  },
+  "Form select field": {
+    "prefix": "select",
+    "body": [
+      "- name: \"${1:Choice}\"",
+      "  type: \"select\"",
+      "  id: \"${2:choice1}\"",
+      "  label: \"${3:Choose one}\"",
+      "  values:",
+      "    - text: \"${4:High}\"",
+      "      value: \"${5:hi}\"",
+      "    - text: \"${6:Low}\"",
+      "      value: \"${7:lo}\""
+    ],
+    "description": "Insert a select field entry for form.fields."
+  }
+}
